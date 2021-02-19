@@ -71,7 +71,6 @@
 				125215B925DBB4BD006F3FB2 /* AppDelegate.swift */,
 				125215BB25DBB4BD006F3FB2 /* SceneDelegate.swift */,
 				12D5D98725E007DE0005505E /* View */,
-				12D5D98B25E008710005505E /* ViewController */,
 				12D5D98A25E0085E0005505E /* PersonsViewModel */,
 				12D5D98825E0082D0005505E /* Model */,
 				12D5D98925E008400005505E /* ImageUtilities */,
@@ -97,6 +96,7 @@
 				125215BD25DBB4BD006F3FB2 /* ContentView.swift */,
 				12D5D98525DFFA510005505E /* PersonDetailView.swift */,
 				125215D525DD478D006F3FB2 /* AddPersonView.swift */,
+				12D5D98B25E008710005505E /* ViewController */,
 			);
 			path = View;
 			sourceTree = "<group>";
