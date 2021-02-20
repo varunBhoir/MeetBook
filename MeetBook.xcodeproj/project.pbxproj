@@ -18,7 +18,10 @@
 		125215D225DC44D4006F3FB2 /* ImageUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125215D125DC44D4006F3FB2 /* ImageUtilities.swift */; };
 		125215D425DC483A006F3FB2 /* PersonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125215D325DC483A006F3FB2 /* PersonsViewModel.swift */; };
 		125215D625DD478D006F3FB2 /* AddPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125215D525DD478D006F3FB2 /* AddPersonView.swift */; };
+		1280FD0825E11219002607FA /* LocationUitilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1280FD0725E11219002607FA /* LocationUitilities.swift */; };
+		1280FD0A25E11782002607FA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1280FD0925E11782002607FA /* MapView.swift */; };
 		12D5D98625DFFA510005505E /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D5D98525DFFA510005505E /* PersonDetailView.swift */; };
+		12D5D98D25E104A50005505E /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D5D98C25E104A50005505E /* LocationFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +38,10 @@
 		125215D125DC44D4006F3FB2 /* ImageUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtilities.swift; sourceTree = "<group>"; };
 		125215D325DC483A006F3FB2 /* PersonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewModel.swift; sourceTree = "<group>"; };
 		125215D525DD478D006F3FB2 /* AddPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPersonView.swift; sourceTree = "<group>"; };
+		1280FD0725E11219002607FA /* LocationUitilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUitilities.swift; sourceTree = "<group>"; };
+		1280FD0925E11782002607FA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		12D5D98525DFFA510005505E /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
+		12D5D98C25E104A50005505E /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +76,9 @@
 			children = (
 				125215B925DBB4BD006F3FB2 /* AppDelegate.swift */,
 				125215BB25DBB4BD006F3FB2 /* SceneDelegate.swift */,
-				12D5D98B25E008710005505E /* ViewController */,
 				12D5D98725E007DE0005505E /* View */,
 				12D5D98825E0082D0005505E /* Model */,
+				12D5D98B25E008710005505E /* ViewController */,
 				12D5D98925E008400005505E /* ImageUtilities */,
 				125215BF25DBB4C1006F3FB2 /* Assets.xcassets */,
 				125215C425DBB4C1006F3FB2 /* LaunchScreen.storyboard */,
@@ -113,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				125215D125DC44D4006F3FB2 /* ImageUtilities.swift */,
+				1280FD0725E11219002607FA /* LocationUitilities.swift */,
 			);
 			path = ImageUtilities;
 			sourceTree = "<group>";
@@ -129,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				125215CF25DC1096006F3FB2 /* ImagePicker.swift */,
+				1280FD0925E11782002607FA /* MapView.swift */,
+				12D5D98C25E104A50005505E /* LocationFetcher.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -205,7 +214,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				125215BA25DBB4BD006F3FB2 /* AppDelegate.swift in Sources */,
+				1280FD0A25E11782002607FA /* MapView.swift in Sources */,
 				125215D425DC483A006F3FB2 /* PersonsViewModel.swift in Sources */,
+				12D5D98D25E104A50005505E /* LocationFetcher.swift in Sources */,
+				1280FD0825E11219002607FA /* LocationUitilities.swift in Sources */,
 				125215BC25DBB4BD006F3FB2 /* SceneDelegate.swift in Sources */,
 				125215D025DC1096006F3FB2 /* ImagePicker.swift in Sources */,
 				12D5D98625DFFA510005505E /* PersonDetailView.swift in Sources */,

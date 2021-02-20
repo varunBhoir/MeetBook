@@ -13,9 +13,13 @@ struct AddPersonView: View {
     @ObservedObject var persons: PersonViewModel
     @State private var personName = ""
     @State private var showImagePickerSheet = false
-    @State private var blankPersonNameAlert = false
     @State var image: Image?
     @State var inputImage: UIImage?
+    @State private var showingErrorAlert = false
+    @State private var errorMessage = ""
+    @State private var imageSourceType: ImageSourceType = .library
+    
+    
     
     var body: some View {
         NavigationView {
@@ -30,11 +34,12 @@ struct AddPersonView: View {
                             .stroke(Color.gray, style: StrokeStyle(lineWidth: 1, lineCap: .round, dash: [5,5]))
                             .scaledToFit()
                     }
-                    
-                    Button(action: {
-                        self.showImagePickerSheet = true
-                    }) {
-                        Text("Select image")
+                    HStack {
+                        Text("Take new...")
+                            .onTapGesture(perform: takePicture)
+                        Spacer()
+                        Text("Select existing...")
+                            .onTapGesture(perform: selectPhoto)
                     }
                 }
                 Section(header: Text("Name")) {
@@ -49,10 +54,10 @@ struct AddPersonView: View {
             })
         }
         .sheet(isPresented: $showImagePickerSheet, onDismiss: loadImage) {
-            ImagePicker(image: self.$inputImage)
+            ImagePicker(image: self.$inputImage, sourceType: self.imageSourceType)
         }
-        .alert(isPresented: $blankPersonNameAlert) {
-            Alert(title: Text("Please provide a Person name"))
+        .alert(isPresented: $showingErrorAlert) {
+            Alert(title: Text(self.errorMessage))
         }
     }
     
@@ -67,19 +72,20 @@ struct AddPersonView: View {
     }
     
     func addPerson() {
-//        guard !self.personName.isEmpty else {
-//            self.blankPersonNameAlert = true
-//            return
-//        }
         guard isPersonNameLegal(personName: personName) else {
-            self.blankPersonNameAlert = true
+            self.showingErrorAlert = true
+            self.errorMessage = "Please provide a Person name"
             return
         }
+        
         var person = Person(name: personName, date: Date())
         if let inputImage = inputImage {
             if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
                 person.setImage(image: jpegData)
             }
+        }
+        if let fetchedLocation = fetchLocation() {
+            person.setLocation(title: personName, latitude: fetchedLocation.latitude, longitude: fetchedLocation.longitude)
         }
         self.persons.add(person: person)
         presentationMode.wrappedValue.dismiss()
@@ -92,6 +98,35 @@ struct AddPersonView: View {
         } else {
             return true
         }
+    }
+    
+    func fetchLocation() -> (latitude: Double, longitude: Double)? {
+        let locationFetcher = LocationFetcher()
+        locationFetcher.start()
+        if let location = locationFetcher.lastKnownLocation {
+            print(location)
+            return (Double(location.latitude), Double(location.longitude))
+        } else {
+            print("location fetching failed")
+            return nil
+        }
+    }
+    
+    func takePicture() {
+        if ImagePicker.isCameraAvailable() {
+            self.imageSourceType = .camera
+            self.showImagePickerSheet = true
+            
+        }
+        else {
+            errorMessage = "Camera is not available"
+            showingErrorAlert = true
+        }
+    }
+    
+    func selectPhoto() {
+        self.imageSourceType = .library
+        self.showImagePickerSheet = true
     }
 }
 

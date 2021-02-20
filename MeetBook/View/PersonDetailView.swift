@@ -23,7 +23,14 @@ struct PersonDetailView: View {
                 .padding(.bottom)
             Text("Meeted at: ")
                 .bold() +
-            Text("\(FormattedDate(date: person.date))")
+                Text("\(FormattedDate(date: person.date))")
+            if isPersonLocationPresent() {
+                MapView(location: person.location!)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding(.top)
+            } else {
+                Text("Location was not recorded for this contact")
+            }
             Spacer()
         }
         .padding()
@@ -64,10 +71,20 @@ struct PersonDetailView: View {
         return formatter.string(from: date)
         
     }
+    
+    func isPersonLocationPresent() -> Bool {
+        if person.location != nil {
+            print("location is present and is ready to pass to mapview")
+            return true
+        }
+        print("location is not present and can't pass to mapview")
+        return false
+        
+    }
 }
 
 struct PersonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonDetailView(person: Person(name: "Varun", date: Date()), persons: PersonViewModel())
+        PersonDetailView(person: Person(id: UUID(), imagePath: "", name: "varun bhoir", date: Date(), location: Person.Location(title: "Varun Bhoir", latitude: 19.076, longitude: 72.8777)), persons: PersonViewModel())
     }
 }
